@@ -1,0 +1,24 @@
+#Q2
+ pwd >>a1.txt
+#Q3
+ id >> a1.txt 
+#Q4
+  ls /proc/ | grep mem >>a1.txt 
+  ls /proc/ | grep cpu >>a1.txt 
+#Q5
+  head /proc/meminfo >>a1.txt
+#Q6
+  tail /proc/cpuinfo >>a1.txt 
+#Q7
+  ls /proc/ | grep os  
+  tail /etc/os-release >>a1.txt
+#Q8
+ total=$(cut -d',' -f2,17 ./taxidata/2019-05.csv |grep "2019-05-12"|cut -d',' -f2|paste -sd+|bc)
+ div=$(cut -d',' -f2,17 ./taxidata/2019-05.csv |grep "2019-05-12"|wc -l)
+ echo "$total/$div"|bc
+
+#Q9
+cut -d',' -f2,17 ./taxidata/2019-05.csv |grep "2019-05-12"|cut -d',' -f2|sort -nr |head -n 1
+#Q10
+cut -d',' -f9 ./taxidata/2019-05.csv | grep -v 'dolocationid' | awk '{if ($1 >= 3) print}' | sort | uniq -c | sort -nr | head -n 1
+
