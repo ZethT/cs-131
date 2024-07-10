@@ -1,0 +1,25 @@
+#!/bin/bash
+export PATH=~bin:"$PATH"
+function notify {
+    echo -e "\a" # This will make a beep sound
+    echo "[$(date +"%T")] $1"
+}
+
+function timer {
+    local duration=$1
+    local message=$2
+    notify "$message"
+    sleep "$duration"
+}
+
+while true; do
+    timer "1500s" "Time to work! Focus for the next 25 minutes."
+
+    timer "300s" "Take a 5-minute break. Stretch, walk around, or relax."
+
+    ((counter++))
+    if [ $((counter % 4)) -eq 0 ]; then
+        timer "900s" "Great job! Take a longer 15-minute break."
+    fi
+done
+
