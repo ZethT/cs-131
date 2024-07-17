@@ -1,0 +1,11 @@
+cat /etc/passwd
+  413  sed '/Vendor 1.0 (vendorid)/p' a1/taxidata/2019-10.csv  > vendor2.csv
+  419  sed 's/[:"-]//g' a1/taxidata/2019-10.csv > a3/no-separators.csv
+  422  sed 's/\.[0-9]*//g' a3/no-separators.csv > a3/no-fractions.csv
+cat scriptfile
+{
+if($17>=10.0)
+{tips[$14]++}
+} 
+END{for(tip in tips) print tip, tips[tip]}
+  awk -F , -f scriptfile ../a1/taxidata/2019-10.csv > result.txt
